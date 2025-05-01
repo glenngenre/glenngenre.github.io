@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "live-server public"
+    "dev": "live-server public",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public",
+    "build": "echo 'No build step required for static site'"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +17,8 @@
     "htmx.org": "^1.9.12"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "live-server": "^1.2.2"
-  }
+  },
+  "homepage": "https://glenngenre.github.io/glenngenre"
 }
