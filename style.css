@@ -1,0 +1,783 @@
+:root {
+    --primary-color: #ffc67b;
+    --secondary-color: #662f02;
+    --accent-color: #ffffff;
+    --text-color: #f1f5f9;
+    --background-color: #161616;
+    --border-color: #334155;
+    --icon-color: #f1f5f9;
+    --bg-grid-color: rgba(59, 60, 61, 0.1);
+    --bg-grid-size: 10px;
+}
+
+/* Tablet (md) */
+@media (max-width: 900px) {
+    :root {
+        --bg-grid-size: 16px;
+    }
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        width: clamp(100vw - 2.5rem, 100vw - 2.5rem, 80vw);
+    }
+    .hero-text h1 {
+        font-size: min(4rem, 12vw);
+        text-align: center;
+    }
+    .hero-text h3 {
+        font-size: min(1.5rem, 6vw);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .hero-content img {
+        width: 25rem;
+        border-radius: 8%;
+    }
+}
+
+/* Desktop (lg) */
+@media (min-width: 901px) {
+    :root {
+        --bg-grid-size: 8px;
+    }
+    .hero-text h1 {
+        font-size: 4.5rem;
+        text-align: start;
+    }
+    .hero-text h3 {
+        font-size: 2.75rem;
+        text-align: start;
+    }
+    .hero-content img {
+        width: 20rem;
+        border-radius: 12%;
+    }
+}
+
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.philosopher-regular {
+    font-family: "Philosopher", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.philosopher-bold {
+    font-family: "Philosopher", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.philosopher-regular-italic {
+    font-family: "Philosopher", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.philosopher-bold-italic {
+    font-family: "Philosopher", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+body {
+    font-family: "Philosopher", "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px);
+    background-size: var(--bg-grid-size) var(--bg-grid-size);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, background-image 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 1rem;
+}
+
+.navbar {
+    display: block;
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+}
+
+.hero-content {
+    display: flex;
+    text-align: center;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 2rem;
+}
+
+.hero-text h1 {
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    letter-spacing: 0.1rem;
+}
+
+.hero-text h3 {
+    color: transparent;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.05rem;
+}
+
+.hero-content img {
+    margin-top: 2rem;
+    max-height: 80%;
+    max-width: 100%;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+.social-icons > :hover {
+    color: var(--accent-color);
+    transition: color 0.3s, filter 0.4s, transform 0.4s;
+    filter: drop-shadow(0 0 0.2px var(--accent-color));
+    transform: scale(1.05);
+}
+
+.social-icons a {
+    opacity: 0;
+    animation: scaleIn 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.social-icons a:nth-child(1) {
+    animation-delay: 1.1s;
+}
+.social-icons a:nth-child(2) {
+    animation-delay: 1.2s;
+}
+.social-icons a:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 75vh;
+}
+
+.projects-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.projects-content > h2 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    letter-spacing: 0.05rem;
+}
+
+.projects-content > h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto;
+}
+
+.project-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--icon-color);
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.project-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.project-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.project-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+.project-card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.project-card:hover {
+    transform: translateY(-2.5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--icon-color);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.project-card > .title-content {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+}
+
+.project-card > .title-content img {
+    width: 3rem;
+    border-radius: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid var(--icon-color);
+}
+
+.project-card > .title-content > .project-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-card > .title-content > .project-title h3 {
+    margin: 0;
+    text-align: start;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.2;
+}
+
+.project-card > .title-content > .project-title p {
+    margin: 0;
+    text-align: start;
+    width: 100%;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+}
+
+.project-details > h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    letter-spacing: 0.05rem;
+}
+
+.project-details > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.project-details > ul > li {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+}
+
+.project-details > ul > ::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.project-tech-stack > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.project-tech-stack > h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    letter-spacing: 0.05rem;
+}
+
+.project-tech-stack > div > .tech-stack-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+.project-tech-stack .flutter {
+    fill: #3db7d4;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.6s both;
+}
+.about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 60%;
+}
+
+.about-content > h2 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    letter-spacing: 0.05rem;
+}
+
+.about-content > h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto;
+}
+.about-content > p {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    text-align: start;
+    line-height: 1.5;
+    letter-spacing: 0.05rem;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.8s both;
+}
+
+.contact-content > h2 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    letter-spacing: 0.05rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 60%;
+}
+
+.contact-content > h2::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto;
+}
+
+.contact-content > p {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 0.05rem;
+}
+
+.email {
+    color: var(--hover-color);
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.email:hover {
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+    color: var(--hover-color);
+    font-weight: bold;
+}
+
+/* === ANIMATIONS === */
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero,
+.about,
+.contact,
+.project-card,
+.social-icons a {
+    will-change: opacity, transform;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
+    animation: fadeInUp 1s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+}
+
+.projects-content > h2 {
+    animation: fadeInUp 1s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 30%;
+}
+
+.project-card {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+.about {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+.contact {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+.project-card:nth-child(1) {
+    animation-range: entry 10% cover 40%;
+}
+
+.project-card:nth-child(2) {
+    animation-range: entry 15% cover 45%;
+}
+
+.project-card:nth-child(3) {
+    animation-range: entry 20% cover 50%;
+}
+
+.project-card:nth-child(4) {
+    animation-range: entry 25% cover 55%;
+}
+
+@keyframes revealText {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.about-content > p,
+.contact-content > p {
+    animation: revealText 1.2s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 40%;
+}
+
+.blobs-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(32px) brightness(0.7);
+    opacity: 0.18;
+    mix-blend-mode: lighten;
+    animation: floatBlob 24s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+.blob1 {
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle at 30% 30%, var(--primary-color), transparent 70%);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+.blob2 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at 70% 60%, var(--secondary-color), transparent 70%);
+    top: 60%;
+    left: 70%;
+    animation-delay: 8s;
+}
+.blob3 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 50% 50%, var(--accent-color), transparent 70%);
+    top: 40%;
+    left: 50%;
+    animation-delay: 16s;
+}
+@keyframes floatBlob {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0.18;
+    }
+    25% {
+        transform: translateY(-30px) scale(1.08) rotate(8deg);
+        opacity: 0.22;
+    }
+    50% {
+        transform: translateY(20px) scale(0.96) rotate(-6deg);
+        opacity: 0.16;
+    }
+    75% {
+        transform: translateY(-18px) scale(1.04) rotate(4deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 0.18;
+    }
+}
