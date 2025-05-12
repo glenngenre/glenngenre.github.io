@@ -370,7 +370,6 @@
     max-width: 1200px;
 }
 
-/* This is the actual card component */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -392,8 +391,6 @@
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
-
-/* This is the shimmer */
 .project-card::before {
     content: "";
     position: absolute;
@@ -401,13 +398,10 @@
     left: -50%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(189, 26, 26, 0.925), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.7s;
     pointer-events: none;
 }
-
-/* This moves the shimmer from left: -100% (outside of view to the left side) to 
-left: 100% (outside of view to the right side)*/
 .hover-card:hover::before {
     left: 50%;
 }
