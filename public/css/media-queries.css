@@ -1,0 +1,101 @@
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        width: clamp(100vw - 2.5rem, 100vw - 2.5rem, 80vw);
+    }
+    .hero-text h1 {
+        font-size: min(4rem, 12vw);
+        text-align: center;
+    }
+    .hero-text h3 {
+        font-size: min(1.5rem, 6vw);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .hero-content img {
+        width: 25rem;
+        border-radius: 8%;
+    }
+
+    .tech-desc {
+        max-width: 90vw;
+        min-width: 250px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-desc {
+        min-width: 220px;
+        max-width: 85vw;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none;
+    }
+
+    .tech-desc::before {
+        left: 50%;
+    }
+
+    .tech-stack-chips {
+        gap: 0.75rem;
+    }
+
+    .tech-stack-item {
+        width: 90px;
+        height: 90px;
+    }
+
+    .tech-desc::before {
+        left: 0;
+        transform: translateX(32px);
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .tech-stack-chips {
+        gap: 0.5rem;
+    }
+
+    .tech-stack-item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .tech-desc {
+        max-width: calc(100vw - 32px);
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+
+    .tech-desc::before {
+        left: 0;
+    }
+}
+
+/* Desktop (lg) */
+@media (min-width: 901px) {
+    .hero-text h1 {
+        font-size: 4.5rem;
+        text-align: start;
+    }
+    .hero-text h3 {
+        font-size: 2.75rem;
+        text-align: start;
+    }
+    .hero-content img {
+        width: 18rem;
+        border-radius: 12%;
+    }
+
+    /* Ensure tooltips don't overflow on desktop */
+    .tech-desc {
+        max-width: 320px;
+    }
+}
