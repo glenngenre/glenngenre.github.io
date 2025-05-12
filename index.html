@@ -5,16 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Portfolio</title>
         <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js" defer></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./css/main.css" />
     </head>
 
-    <body class="">
+    <body class="" x-data="{ scrolled: false }">
         <div class="blobs-bg">
             <div class="blob blob1"></div>
             <div class="blob blob2"></div>
@@ -30,7 +31,7 @@
                     </div>
                     <div>
                         <img src="./assets/images/profile.jpg" alt="Glenn Genre Mamanao" class="hero-image" />
-                        <div class="social-icons">
+                        <div class="social-icons" x-intersect:enter="transition ease-out duration-300">
                             <!-- GitHub SVG -->
                             <a href="https://github.com/glenngenre">
                                 <svg
@@ -82,11 +83,195 @@
                     </div>
                 </div>
             </section>
-            <section class="projects" id="projects">
-                <div class="projects-content">
-                    <h2>My Projects</h2>
-                    <div class="project-cards">
-                        <div class="project-card" hx-get="/projects/1" hx-target="#project-details" hx-swap="innerHTML">
+            <section class="tech-stack content-section" id="tech-stack" x-data="{ techHover: null }">
+                <div class="tech-stack-content section-content">
+                    <h2 class="section-title">Tech Stack</h2>
+                    <div class="tech-stack-chips" x-on:scroll.window="scrolled = true">
+                        <div
+                            class="tech-stack-item flutter"
+                            :class="{ 'tech-active': techHover === 'flutter' }"
+                            @mouseenter="techHover = 'flutter'"
+                            @mouseleave="techHover = null"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                <path
+                                    d="M19.083 0l-16.015 16 4.932 4.932 20.912-20.916h-9.808zM19.104 14.76l-8.631 8.609 8.631 8.631h9.828l-8.615-8.625 8.615-8.615z"
+                                />
+                            </svg>
+                            <p>Flutter</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'flutter'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                Cross-platform UI toolkit for building beautiful, natively compiled applications
+                            </div>
+                        </div>
+                        <div
+                            class="tech-stack-item"
+                            :class="{ 'tech-active': techHover === 'firebase' }"
+                            @mouseenter="techHover = 'firebase'"
+                            @mouseleave="techHover = null"
+                        >
+                            <!-- Firebase SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                                <g>
+                                    <path
+                                        fill="#FFC67B"
+                                        d="M 15.63 5.65 C 15.42 5.25 14.83 5.25 14.62 5.65 L 13.34 8 L 10.4 2.45 C 10.14 1.98 9.42 2.1 9.34 2.62 L 6.37 21.31 L 18.48 11.07 Z"
+                                    />
+                                    <path fill="#F67F18" d="M 16.05 13.12 L 13.34 8 L 6.37 21.31 Z" />
+                                    <path
+                                        fill="#FFCA28"
+                                        d="M 21.54 7.39 C 21.46 6.964844 20.929688 6.792969 20.613281 7.101562 L 6.371094 21.316406 L 14.253906 25.367188 C 14.753906 25.640625 15.359375 25.640625 15.859375 25.367188 L 23.789062 21.316406 Z"
+                                    />
+                                </g>
+                            </svg>
+                            <p>Firebase</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'firebase'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                Backend platform for building web and mobile applications without server-side code
+                            </div>
+                        </div>
+                        <div
+                            class="tech-stack-item"
+                            :class="{ 'tech-active': techHover === 'react' }"
+                            @mouseenter="techHover = 'react'"
+                            @mouseleave="techHover = null"
+                        >
+                            <!-- React SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                <g fill="#61DAFB">
+                                    <circle cx="64" cy="64" r="11.4"></circle>
+                                    <path
+                                        d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3c.6-2.4 1.1-4.8 1.5-7.1c2.1-13.2-.2-22.5-6.6-26.1c-1.9-1.1-4-1.6-6.4-1.6c-7 0-15.9 5.2-24.9 13.9c-9-8.7-17.9-13.9-24.9-13.9c-2.4 0-4.5.5-6.4 1.6c-6.4 3.7-8.7 13-6.6 26.1c.4 2.3.9 4.7 1.5 7.1c-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3c-.6 2.4-1.1 4.8-1.5 7.1c-2.1 13.2.2 22.5 6.6 26.1c1.9 1.1 4 1.6 6.4 1.6c7.1 0 16-5.2 24.9-13.9c9 8.7 17.9 13.9 24.9 13.9c2.4 0 4.5-.5 6.4-1.6c6.4-3.7 8.7-13 6.6-26.1c-.4-2.3-.9-4.7-1.5-7.1c2.4-.7 4.7-1.4 6.9-2.3c12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3c-.3 2.1-.8 4.3-1.4 6.6c-5.2-1.2-10.7-2-16.5-2.5c-3.4-4.8-6.9-9.1-10.4-13c7.4-7.3 14.9-12.3 21-12.3c1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6c-3.7.3-7.4.4-11.2.4c-3.9 0-7.6-.1-11.2-.4c-2.2-3.2-4.2-6.4-6-9.6c-1.9-3.3-3.7-6.7-5.3-10c1.6-3.3 3.4-6.7 5.3-10c1.8-3.2 3.9-6.4 6.1-9.6c3.7-.3 7.4-.4 11.2-.4c3.9 0 7.6.1 11.2.4c2.2 3.2 4.2 6.4 6 9.6c1.9 3.3 3.7 6.7 5.3 10c-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3c-3.4.8-7 1.4-10.8 1.9c1.2-1.9 2.5-3.9 3.6-6c1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3c2.3.1 4.6.2 6.9.2c2.3 0 4.6-.1 6.9-.2c-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9c1.1-3.3 2.3-6.8 3.8-10.3c1.1 2 2.2 4.1 3.4 6.1c1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3c3.4-.8 7-1.4 10.8-1.9c-1.2 1.9-2.5 3.9-3.6 6c-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3c-2.3-.1-4.6-.2-6.9-.2c-2.3 0-4.6.1-6.9.2c2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9c-1.1 3.3-2.3 6.8-3.8 10.3c-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3c1-.6 2.2-.9 3.5-.9c6 0 13.5 4.9 21 12.3c-3.5 3.8-7 8.2-10.4 13c-5.8.5-11.3 1.4-16.5 2.5c-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4c2-.8 4.2-1.5 6.4-2.1c1.6 5 3.6 10.3 6 15.6c-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3c.3-2.1.8-4.3 1.4-6.6c5.2 1.2 10.7 2 16.5 2.5c3.4 4.8 6.9 9.1 10.4 13c-7.4 7.3-14.9 12.3-21 12.3c-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3c-1 .6-2.2.9-3.5.9c-6 0-13.5-4.9-21-12.3c3.5-3.8 7-8.2 10.4-13c5.8-.5 11.3-1.4 16.5-2.5c.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1c-1.6-5-3.6-10.3-6-15.6c2.4-5.3 4.5-10.5 6-15.5c13.8 4 22.1 10 22.1 15.6c0 4.7-5.8 9.7-15.7 13.4z"
+                                    ></path>
+                                </g>
+                            </svg>
+
+                            <p>React</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'react'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                JavaScript library for building user interfaces with reusable components
+                            </div>
+                        </div>
+                        <div
+                            class="tech-stack-item javascript"
+                            :class="{ 'tech-active': techHover === 'javascript' }"
+                            @mouseenter="techHover = 'javascript'"
+                            @mouseleave="techHover = null"
+                        >
+                            <!-- JavaScript SVG -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-javascript" viewBox="0 0 16 16">
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM9.053 7.596v3.127l-.007 1.752q0 .498-.186.752t-.556.263q-.342 0-.528-.234-.185-.234-.185-.684v-.175H6.37v.185q0 .665.253 1.113.255.45.703.674.44.225 1.016.225.88 0 1.406-.498.527-.498.527-1.485l.007-1.752V7.596zm3.808-.108q-.585 0-1.006.244a1.67 1.67 0 0 0-.634.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.303.42.967.732l.469.215q.438.186.625.43.185.244.185.635 0 .478-.166.703-.156.224-.527.224-.361.001-.547-.244-.186-.243-.205-.752h-1.162q.02.996.498 1.524.479.527 1.386.527.909 0 1.417-.518.507-.517.507-1.484 0-.81-.332-1.289t-1.045-.79l-.449-.196q-.39-.166-.556-.381-.166-.214-.166-.576 0-.4.165-.596.177-.195.508-.195.361 0 .508.234.156.234.176.703h1.123q-.03-.976-.498-1.484-.47-.518-1.309-.518"
+                                />
+                            </svg>
+                            <p>JavaScript</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'javascript'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                High-level, dynamic, untyped, and interpreted programming language
+                            </div>
+                        </div>
+                        <div
+                            class="tech-stack-item"
+                            :class="{ 'tech-active': techHover === 'tailwind' }"
+                            @mouseenter="techHover = 'tailwind'"
+                            @mouseleave="techHover = null"
+                        >
+                            <!-- Tailwind SVG -->
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    fill="#00bcff"
+                                    d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+                                ></path>
+                            </svg>
+                            <p>Tailwind</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'tailwind'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                Utility-first CSS framework for creating custom designs without leaving your HTML
+                            </div>
+                        </div>
+                        <div
+                            class="tech-stack-item"
+                            :class="{ 'tech-active': techHover === 'typescript' }"
+                            @mouseenter="techHover = 'typescript'"
+                            @mouseleave="techHover = null"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="typescript-svg">
+                                <rect width="24" height="24" rx="1.125" fill="#3178c6" />
+                                <path
+                                    fill="#ffffff"
+                                    d="M18.488 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                                    ="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                                />
+                            </svg>
+
+                            <p>TypeScript</p>
+                            <div
+                                class="tech-desc"
+                                x-show="techHover === 'typescript'"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                                Typed superset of JavaScript that compiles to plain JavaScript
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="projects content-section" id="projects">
+                <div class="projects-content section-content">
+                    <h2 class="section-title">My Projects</h2>
+                    <div class="project-cards" x-data="{ hoveredCard: null }">
+                        <div
+                            class="project-card hover-card"
+                            :class="{ 'card-hover': hoveredCard === 'codecraft' }"
+                            @mouseenter="hoveredCard = 'codecraft'"
+                            @mouseleave="hoveredCard = null"
+                        >
                             <div class="title-content">
                                 <img src="./assets/images/project1.png" alt="Project 1 Image" class="project-image" />
                                 <div class="project-title">
@@ -95,25 +280,19 @@
                                 </div>
                             </div>
                             <div class="project-details" id="project-details">
-                                <h3>Key Features:</h3>
-                                <ul class="project-features">
+                                <h3 class="component-title">Key Features:</h3>
+                                <ul class="feature-list">
                                     <li>Coding Challenges via Unit Tests</li>
                                     <li>Live Code Competition</li>
                                     <li>Modules with Challenges and Quizzes</li>
                                     <li>Leaderboard</li>
-                                    <li>Organisations</li>
                                 </ul>
                             </div>
-                            <div class="project-tech-stack">
-                                <h3>Tech Stack:</h3>
-                                <div>
+                            <div class="project-tech-stack component-border">
+                                <h3 class="component-title">Tech Stack:</h3>
+                                <div class="tech-stack-chips">
                                     <div class="tech-stack-item flutter">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="24"
-                                            height="24"
-                                            viewBox="0 0 32 32"
-                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                                             <path
                                                 d="M19.083 0l-16.015 16 4.932 4.932 20.912-20.916h-9.808zM19.104 14.76l-8.631 8.609 8.631 8.631h9.828l-8.615-8.625 8.615-8.615z"
                                             />
@@ -121,16 +300,7 @@
                                         <p>Flutter</p>
                                     </div>
                                     <div class="tech-stack-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            width="32"
-                                            zoomAndPan="magnify"
-                                            viewBox="0 0 30 30.000001"
-                                            height="32"
-                                            preserveAspectRatio="xMidYMid meet"
-                                            version="1.0"
-                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 32 32" version="1.0">
                                             <defs>
                                                 <clipPath id="id1">
                                                     <path
@@ -180,8 +350,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="project-links">
+                                <a href="https://code-craft.live/" target="_blank" class="icon-button">View Project</a>
+                                <a href="https://github.com/glenngenre/codecraft" target="_blank" class="icon-button"
+                                    >Source Code</a
+                                >
+                            </div>
                         </div>
-                        <div class="project-card" hx-get="/projects/1" hx-target="#project-details" hx-swap="innerHTML">
+
+                        <div
+                            class="project-card"
+                            :class="{ 'card-hover': hoveredCard === 'chatapp' }"
+                            @mouseenter="hoveredCard = 'chatapp'"
+                            @mouseleave="hoveredCard = null"
+                            hx-get="/projects/1"
+                            hx-target="#project-details"
+                            hx-swap="innerHTML"
+                        >
                             <div class="title-content">
                                 <img src="./assets/images/project1.png" alt="Project 1 Image" class="project-image" />
                                 <div class="project-title">
@@ -190,25 +375,19 @@
                                 </div>
                             </div>
                             <div class="project-details" id="project-details">
-                                <h3>Key Features:</h3>
-                                <ul class="project-features">
+                                <h3 class="component-title">Key Features:</h3>
+                                <ul class="feature-list">
                                     <li>Real-time messaging</li>
                                     <li>Group chats</li>
                                     <li>File sharing</li>
                                     <li>Cross-platform support</li>
                                 </ul>
                             </div>
-                            <div class="project-tech-stack">
-                                <h3>Tech Stack:</h3>
-                                <div>
-                                    <div class="tech-stack-item flutter">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 128 128"
-                                            width="32"
-                                            height="32"
-                                            {...props}
-                                        >
+                            <div class="project-tech-stack component-border">
+                                <h3 class="component-title">Tech Stack:</h3>
+                                <div class="tech-stack-chips">
+                                    <div class="tech-stack-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 128 128" {...props}>
                                             <g fill="#61DAFB">
                                                 <circle cx="64" cy="64" r="11.4"></circle>
                                                 <path
@@ -216,20 +395,10 @@
                                                 ></path>
                                             </g>
                                         </svg>
-
                                         <p>React</p>
                                     </div>
                                     <div class="tech-stack-item">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            width="32"
-                                            zoomAndPan="magnify"
-                                            viewBox="0 0 30 30.000001"
-                                            height="32"
-                                            preserveAspectRatio="xMidYMid meet"
-                                            version="1.0"
-                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -4 32 32" version="1.0">
                                             <defs>
                                                 <clipPath id="id1">
                                                     <path
@@ -283,9 +452,9 @@
                     </div>
                 </div>
             </section>
-            <section class="about" id="about">
-                <div class="about-content">
-                    <h2>About Me</h2>
+            <section class="about content-section" id="about">
+                <div class="about-content section-content">
+                    <h2 class="section-title">About Me</h2>
                     <p>
                         I'm a developer based on Quezon City, Philippines with a passion for creating innovative
                         solutions. I have a strong background in software development, specializing in mobile and web
@@ -293,14 +462,17 @@
                         applications that solve real-world problems.
                     </p>
                     <p>
-                        In my spare time, I tend to help my friends with their projects, and I love to learn new things.
-                        I am always looking for opportunities to grow and improve my skills.
+                        In my spare time, I tend to help my friends with their projects, or contribute to open source
+                        projects. I love to learn new things, whether within the tech industry or outside of it. I love
+                        to read books and watch video essays about history, philosophy, and science. It's a great way to
+                        build a well-rounded perspective on the world.
                     </p>
                 </div>
             </section>
-            <section class="contact">
-                <div class="contact-content">
-                    <h2>Get in touch</h2>
+
+            <section class="contact content-section" id="contact">
+                <div class="contact-content section-content">
+                    <h2 class="section-title">Get in touch</h2>
                     <p>
                         I am always open to new opportunities. If you have any questions, a project proposal, or just
                         want to say hi, feel free to reach out! You can contact me via email at
@@ -359,6 +531,12 @@
                     </div>
                 </div>
             </section>
+
+            <footer class="footer content-section">
+                <div class="footer-content section-content">
+                    <p>&copy; 2025 Glenn Genre Mamanao. All rights reserved.</p>
+                </div>
+            </footer>
         </main>
     </body>
 </html>

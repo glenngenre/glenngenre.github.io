@@ -1,0 +1,68 @@
+body {
+    background-image: linear-gradient(var(--bg-grid-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px);
+    background-size: var(--bg-grid-size) var(--bg-grid-size);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, background-image 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0;
+    padding: 1rem;
+}
+
+.navbar {
+    display: block;
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+}
+
+.blobs-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(32px) brightness(0.7);
+    opacity: 0.18;
+    mix-blend-mode: lighten;
+    animation: floatBlob 24s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.blob1 {
+    width: 340px;
+    height: 340px;
+    background: radial-gradient(circle at 30% 30%, var(--primary-color), transparent 70%);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.blob2 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at 70% 60%, var(--secondary-color), transparent 70%);
+    top: 60%;
+    left: 70%;
+    animation-delay: 8s;
+}
+
+.blob3 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 50% 50%, var(--accent-color), transparent 70%);
+    top: 40%;
+    left: 50%;
+    animation-delay: 16s;
+}
