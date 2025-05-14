@@ -19,13 +19,27 @@
     box-shadow: 0 0 8px var(--primary-color);
 }
 
+.section-subtitle {
+    text-align: center;
+    color: var(--text-color);
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .component-title {
-    margin: 0 0 0.5rem;
-    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     color: var(--primary-color);
     letter-spacing: 0.05rem;
+    position: relative;
+    display: inline-block;
 }
 
 .card-base {
@@ -76,17 +90,19 @@
     margin-bottom: 0.5rem;
     transition: transform 0.2s ease;
     opacity: 0.9;
+    padding-left: 0.25rem;
 }
 
 .feature-list li:hover {
     transform: translateX(5px);
     opacity: 1;
+    color: var(--accent-color);
 }
 
 .feature-list li::before {
-    content: "•";
+    content: "\25B6";
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     margin-right: 0.75rem;
 }
 
@@ -127,6 +143,7 @@
     flex-direction: column;
     height: 100vh;
     animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+    margin-bottom: 4rem;
 }
 
 .hero-content {
@@ -201,8 +218,6 @@
     min-height: 50vh;
     margin-bottom: 3rem;
     padding-top: 2rem;
-    opacity: 0;
-    animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.7s both;
 }
 
 .tech-stack-content {
@@ -313,25 +328,44 @@
 
 .flutter {
     fill: #3db7d4;
-    padding-top: 1rem;
+}
+
+.svg-extra-small {
+    width: 16px;
+    height: 16px;
+}
+
+.svg-small {
+    width: 24px;
+    height: 24px;
+}
+
+.svg-medium {
+    width: 32px;
+    height: 32px;
+}
+
+.svg-large {
+    width: 48px;
+    height: 48px;
+}
+
+.bootstrap {
+    fill: #563d7c;
 }
 
 .javascript {
     fill: #f7df1e;
-    padding-top: 1rem;
 }
 
-.tailwind {
-    fill: #38bdf8;
-    padding-top: 1rem;
-}
-
-.typescript {
-    padding-top: 1rem;
-}
-
-.riverpod {
-    padding-top: 1rem;
+.bootstrap,
+.tailwind,
+.firebase,
+.riverpod,
+.typescript,
+.react,
+.flutter {
+    padding-top: 4px;
 }
 
 .typescript-svg {
@@ -380,6 +414,7 @@
     padding: 1.5rem 1rem;
     width: 100%;
     max-width: 400px;
+    height: 620px;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -388,8 +423,6 @@
     color: var(--text-color);
     position: relative;
     overflow: hidden;
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 .project-card::before {
     content: "";
@@ -414,6 +447,7 @@
     transform: translateY(-10px) scale(1.02);
     border: 1px solid var(--primary-color);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 198, 123, 0.3);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .project-card > .title-content {
@@ -427,16 +461,15 @@
 }
 
 .project-card > .title-content img {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    padding: 0.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 12%;
+    padding: 0.25px;
     margin-top: 0.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     object-fit: cover;
     background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
 .hover-card:hover > .title-content img {
@@ -456,7 +489,7 @@
     margin: 0;
     text-align: start;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     line-height: 1.2;
@@ -468,10 +501,10 @@
 }
 
 .project-card > .title-content > .project-title p {
-    margin: 0.5rem 0 0;
+    margin: 0.3rem 0 0;
     text-align: start;
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: "Poppins", sans-serif;
     opacity: 0.8;
 }
@@ -482,16 +515,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    padding-top: 1rem;
+    padding-top: 1.25rem;
     padding-left: 1rem;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
 }
 
 .project-tech-stack > .tech-stack-chips > .tech-stack-item {
     margin: 0.5rem 0;
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
+    padding-top: 0.3rem;
+}
+
+.project-tech-stack > .tech-stack-chips > .tech-stack-item p {
+    font-size: 0.65rem;
+    margin-bottom: 0.2rem;
+}
+
+.project-tech-stack > .tech-stack-chips > .tech-stack-item svg {
+    width: 32px;
+    height: 32px;
 }
 
 .project-links {
@@ -499,7 +544,9 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    width: 100%;
 }
 
 /* About Section */
@@ -574,4 +621,50 @@
 .email:hover {
     text-decoration: underline;
     color: var(--primary-color);
+}
+
+.btn-github,
+.btn-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-demo {
+    color: var(--background-color);
+}
+
+.btn-demo:hover {
+    color: black;
+}
+
+.btn-github {
+    background-color: #24292e;
+    border: 1px solid #444;
+}
+
+.btn-github:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-demo {
+    background-color: var(--primary-color);
+    border: 1px solid rgba(255, 198, 123, 0.5);
+}
+
+.btn-demo:hover {
+    background-color: #ffb44c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 180, 76, 0.3);
 }

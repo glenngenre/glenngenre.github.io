@@ -11,13 +11,13 @@
 }
 
 @keyframes fadeInUp {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translate3d(0, 40px, 0);
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -27,6 +27,15 @@
     }
     to {
         clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
@@ -65,31 +74,7 @@
     animation: fadeInUp 1s ease-out both;
     animation-timeline: view();
     animation-range: entry 10% cover 30%;
-}
-
-.tech-stack-content > h2 {
-    animation: fadeInUp 1s ease-out both;
-    animation-timeline: view();
-    animation-range: entry 5% cover 30%;
-}
-
-.tech-stack-content > .tech-stack-chips {
-    animation: fadeInUp 0.8s ease-out both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 40%;
-}
-
-.projects-content > h2 {
-    animation: fadeInUp 1s ease-out both;
-    animation-timeline: view();
-    animation-range: entry 5% cover 30%;
-}
-
-.project-card {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out both;
-    animation-timeline: view();
-    animation-range: entry 10% cover 40%;
+    animation-delay: 2s;
 }
 
 .about {
@@ -97,6 +82,7 @@
     animation: fadeInUp 1s ease-out both;
     animation-timeline: view();
     animation-range: entry 10% cover 40%;
+    animation-delay: 2s;
 }
 
 .contact {
@@ -106,22 +92,6 @@
     animation-range: entry 10% cover 40%;
 }
 
-.project-card:nth-child(1) {
-    animation-range: entry 10% cover 40%;
-}
-
-.project-card:nth-child(2) {
-    animation-range: entry 15% cover 45%;
-}
-
-.project-card:nth-child(3) {
-    animation-range: entry 20% cover 50%;
-}
-
-.project-card:nth-child(4) {
-    animation-range: entry 25% cover 55%;
-}
-
 .about-content > p,
 .contact-content > p {
     animation: revealText 1.2s ease-out both;
@@ -129,9 +99,17 @@
     animation-range: entry 10% cover 20%;
 }
 
-[x-cloak] { display: none !important; }
+[x-cloak] {
+    display: none !important;
+}
 
 .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-out-down {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
