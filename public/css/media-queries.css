@@ -1,101 +1,58 @@
-@media (max-width: 900px) {
-    .hero-content {
-        flex-direction: column;
-        align-items: center;
-        width: clamp(100vw - 2.5rem, 100vw - 2.5rem, 80vw);
-    }
-    .hero-text h1 {
-        font-size: min(4rem, 12vw);
-        text-align: center;
-    }
-    .hero-text h3 {
-        font-size: min(1.5rem, 6vw);
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .hero-content img {
-        width: 25rem;
-        border-radius: 8%;
+@media (max-width: 700px) {
+    .nav-links {
+        display: none;
     }
 
-    .tech-desc {
-        max-width: 90vw;
-        min-width: 250px;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        hyphens: auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .tech-desc {
-        min-width: 220px;
-        max-width: 85vw;
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        transform: none;
+    .hero h1 {
+        font-size: clamp(2.8rem, 13vw, 5rem);
     }
 
-    .tech-desc::before {
-        left: 50%;
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
-    .tech-stack-chips {
+    .tech-group {
+        grid-template-columns: 1fr;
         gap: 0.75rem;
     }
 
-    .tech-stack-item {
-        width: 90px;
-        height: 90px;
+    .exp-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
-    .tech-desc::before {
-        left: 0;
-        transform: translateX(32px);
+    .exp-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .project-item {
+        grid-template-columns: 1fr;
+    }
+
+    .project-links-col {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
-/* Extra small screens */
-@media (max-width: 480px) {
-    .tech-stack-chips {
-        gap: 0.5rem;
-    }
-
-    .tech-stack-item {
-        width: 80px;
-        height: 80px;
-    }
-
-    .tech-desc {
-        max-width: calc(100vw - 32px);
-        font-size: 0.85rem;
-        padding: 0.75rem;
-    }
-
-    .tech-desc::before {
-        left: 0;
-    }
-}
-
-/* Desktop (lg) */
-@media (min-width: 901px) {
-    .hero-text h1 {
-        font-size: 4.5rem;
-        text-align: start;
-    }
-    .hero-text h3 {
-        font-size: 2.75rem;
-        text-align: start;
-    }
-    .hero-content img {
-        width: 18rem;
-        border-radius: 12%;
-    }
-
-    /* Ensure tooltips don't overflow on desktop */
-    .tech-desc {
-        max-width: 320px;
+@media (min-width: 701px) and (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
     }
 }
