@@ -1,32 +1,29 @@
-@media (max-width: 700px) {
+@media (max-width: 768px) {
+    :root {
+        --section-gap: 4rem;
+    }
+
     .nav-links {
         display: none;
     }
 
-    .hero h1 {
-        font-size: clamp(2.8rem, 13vw, 5rem);
+    .hero::before {
+        display: none;
     }
 
-    .about-grid {
+    .about-grid,
+    .contact-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
     }
 
-    .tech-group {
+    .exp-item {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
 
-    .exp-item {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .exp-meta {
-        display: flex;
-        align-items: baseline;
-        gap: 1rem;
-        flex-wrap: wrap;
+    .exp-item::before {
+        display: none;
     }
 
     .project-item {
@@ -34,25 +31,39 @@
     }
 
     .project-links-col {
-        align-items: flex-start;
         flex-direction: row;
-        flex-wrap: wrap;
+        align-items: center;
     }
 
-    .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+    .tech-groups {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
     }
 
-    .footer {
+    .hero h1 {
+        font-size: clamp(2.4rem, 14vw, 4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-links {
         flex-direction: column;
         align-items: flex-start;
     }
 }
 
-@media (min-width: 701px) and (max-width: 900px) {
-    .about-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
+@media print {
+    .nav,
+    .hero-scroll {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    section {
+        break-inside: avoid;
     }
 }
