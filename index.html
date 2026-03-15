@@ -5,6 +5,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Glenn Genre Mamanao — Software Engineer</title>
 
+        <!-- Primary Meta -->
+        <meta
+            name="description"
+            content="Software Engineer based in Quezon City, PH. I build across the full stack — Flutter, FastAPI, Go, and the occasional C++ rabbit hole."
+        />
+        <meta name="author" content="Glenn Genre Mamanao" />
+
+        <!-- Open Graph (Facebook, LinkedIn, Discord, Slack, iMessage) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://genre.skwtr.com/" />
+        <meta
+            property="og:title"
+            content="Glenn Genre Mamanao — Software Engineer"
+        />
+        <meta
+            property="og:description"
+            content="Software Engineer based in Quezon City, PH. I build across the full stack — Flutter, FastAPI, Go, and the occasional C++ rabbit hole."
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+
+        <!-- Twitter / X Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Glenn Genre Mamanao — Software Engineer"
+        />
+        <meta
+            name="twitter:description"
+            content="Software Engineer based in Quezon City, PH. I build across the full stack — Flutter, FastAPI, Go, and the occasional C++ rabbit hole."
+        />
+
         <!-- Alpine.js -->
         <script
             defer
@@ -30,6 +63,52 @@
         x-data="{ scrolled: false }"
         @scroll.window="scrolled = window.scrollY > 40"
     >
+        <input type="checkbox" id="theme-toggle" />
+
+        <!-- 2. Visible toggle button — also a direct child of <body> -->
+        <label
+            class="theme-toggle-label"
+            for="theme-toggle"
+            aria-label="Toggle dark mode"
+        >
+            <!-- Sun icon (shown in light mode) -->
+            <svg
+                class="icon-sun"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <circle cx="12" cy="12" r="4" />
+                <line x1="12" y1="2" x2="12" y2="5" />
+                <line x1="12" y1="19" x2="12" y2="22" />
+                <line x1="2" y1="12" x2="5" y2="12" />
+                <line x1="19" y1="12" x2="22" y2="12" />
+                <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+                <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+                <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+                <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+            </svg>
+
+            <!-- Moon icon (shown in dark mode) -->
+            <svg
+                class="icon-moon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+        </label>
         <!-- ─── NAV ─────────────────────────────────────────── -->
         <nav class="nav" :class="{ scrolled: scrolled }">
             <a href="#"><span class="nav-logo">ggm.dev</span> </a>
